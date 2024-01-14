@@ -31,3 +31,4 @@ cd room_rate_management
 ```bash
 python manage.py runserver
 ```
+This will start the development server, and you can access the application by visiting http://127.0.0.1:8000/ in your web browser.
