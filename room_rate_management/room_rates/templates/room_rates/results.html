@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Room Rate List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ccc;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: #333;
+        color: #fff;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      tr:hover {
+        background-color: #ddd;
+      }
+      a {
+        text-decoration: none;
+        color: #007bff;
+      }
+      .alert-success {
+        background-color: #4caf50; /* Green color */
+        color: #fff; /* White text */
+        border-color: #4caf50; /* Green border color */
+      }
+
+      .alert-info {
+        background-color: #ff5733; /* Red color */
+        color: #fff; /* White text */
+        border-color: #ff5733; /* Red border color */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Room Rate List</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Room ID</th>
+            <th>Room Name</th>
+            <th>Lowest Rate</th>
+            <th>Discount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for room_rate,rate,message in zipped_data %}
+          <tr>
+            <td>{{ room_rate.room_id }}</td>
+            <td>{{ room_rate.room_name }}</td>
+            <td>{{ rate }}</td>
+            <td class="alert-{{ message.tag }}">{{ message.text}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <a href="{% url 'search-home' %}" class="btn">Back to Home</a>
+  </body>
+</html>
